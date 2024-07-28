@@ -34,7 +34,7 @@ function App() {
   console.log("curr ip Location: ",currLocation);
 
   const fetchWeatherData = async (location) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}&days=3`;
     const options = {
       method: 'GET',
       headers: {
@@ -63,6 +63,7 @@ function App() {
       fetchWeatherData(currLocation);
     }
   }, [currLocation]);
+  
   console.log("weather data in app ",weatherData);
   
 
@@ -72,7 +73,7 @@ function App() {
 
       <div className=' max-w-[80rem] mx-auto font-outfit'>
         <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} />
-        <Grid />
+        <Grid weatherData={weatherData}/>
       </div>
 
     </>

@@ -14,21 +14,22 @@ const Navbar = ({ fetchWeatherData, data }) => {
         fetchWeatherData(inputValue);
     }
 
+  
     const city = data?.location.name;
     const country = data?.location.country;
     console.log("weather data navbar ",data?.location.name);
     return (
         <div className=''>
-            <div className=' bg-[#e3e7fb] border-2 border-white rounded-3xl h-[5rem] py-5 px-6 flex mt-3 items-center justify-between'>
+            <div className=' bg-[#ece8fa] border-3 border-white rounded-3xl h-[5rem] py-5 px-10 flex mt-3 items-center justify-between'>
 
                 <div className='flex items-center'>
                     <h2 className='font-bold text-2xl text-blue-500 '>SkyCast</h2>
                 </div>
 
                 {/* location */}
-                <div className='flex items-center'>
+                <div className='flex items-center gap-2'>
                     <CiLocationOn size={25} />
-                    <p className=''>{city}, {country}</p>
+                    <p className=''>{city || 'Mumbai'}, {country || 'India'}</p>
                 </div>
 
                 {/* Search */}
@@ -40,7 +41,7 @@ const Navbar = ({ fetchWeatherData, data }) => {
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)} />
-                    <button className='absolute bottom-[1.5px] p-[8.2px] rounded-r-xl right-[1px] bg-white hover:bg-blue-500'><MdLocationSearching size={23} /></button>
+                    {/* <button onClick={refetchCurrLocData} className='absolute bottom-[1.5px] p-[8.2px] rounded-r-xl right-[1px] bg-white hover:bg-blue-500'><MdLocationSearching size={23} /></button> */}
                 </form>
 
                 <div>

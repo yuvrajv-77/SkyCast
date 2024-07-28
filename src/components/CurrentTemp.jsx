@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const CurrentTemp = () => {
+const CurrentTemp = ({data}) => {
     const [currentTime, setCurrentTime] = useState('');
     const [currentDate, setCurrentDate] = useState('');
 
@@ -32,6 +32,8 @@ const CurrentTemp = () => {
 
         return () => clearInterval(intervalId); // Cleanup interval on component unmount
     }, []);
+
+    
     return (
         <div className='p-8 flex flex-col justify-between h-full'>
             <div className='text-md flex font-light'>
@@ -39,10 +41,10 @@ const CurrentTemp = () => {
             </div>
 
             <div className='flex items-center gap-9'>
-                <p className='flex items-start text-8xl font-extralight'>39<span className='text-3xl '>°C</span></p>
+                <p className=' flex items-start text-8xl font-extralight'>{data.tempC || '00.0'}<span className='text-3xl '>°C</span></p>
                 <div className='border-l-2 pl-5 py-4 text-lg font-normal border-white'>
-                    <p>Rainy</p>
-                    <p>Feels Like 62°</p>
+                    <p>{data.status}</p>
+                    <p className='text-gray-500'>Feels Like {data.feelC}°C</p>
                 </div>
             </div>
 
