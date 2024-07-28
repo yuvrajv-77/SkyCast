@@ -1,11 +1,12 @@
 import React from 'react'
+import CurrentTemp from './CurrentTemp'
 
 const Grid = () => {
   return (
     <div>
          <div className='h-[calc(100vh-8rem)]  mt-5  grid grid-cols-5 gap-5 grid-rows-6'>
 
-          <div className='col-span-3 row-span-2  bg-[#e3e7fb] rounded-3xl border-2 border-white'>a</div>
+          <div className='col-span-3 row-span-2  bg-[#e3e7fb] rounded-3xl border-2 border-white'><CurrentTemp/></div>
 
           <div className=' bg-[#e3e7fb] rounded-3xl border-2 border-white col-span-2 row-span-6'>b</div>
 

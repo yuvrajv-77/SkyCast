@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      outfit:["Outfit", "sans-serif"]
+    }
   },
   darkMode: "class",
   plugins: [nextui()],

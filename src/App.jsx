@@ -1,21 +1,80 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Grid from './components/Grid'
-import { NextUIProvider } from '@nextui-org/system'
-
-
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currLocation, setCurrLocation] = useState()
+  const [weatherData, setWeatherData] = useState();
+
+  const fetchLocationData = async () => {
+    try {
+      // Fetch IP address
+      const ipResponse = await fetch("https://api.ipify.org");
+      const ipData = await ipResponse.text();
+      const ipAddress = ipData;
+
+      // Fetch location data using the IP address
+      const url = `https://weatherapi-com.p.rapidapi.com/ip.json?q=${ipAddress}`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': '9fe86fb006mshf6b0a49b11fe37fp112be1jsn57e1cd676c0e',
+          'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
+        }
+      };
+      const locationResponse = await fetch(url, options);
+      const locationData = await locationResponse.json();
+
+      // Set the location data in state
+      setCurrLocation(locationData.city);
+    } catch (error) {
+      console.error("Failed to fetch location data: ", error);
+    }
+  };
+  console.log("curr ip Location: ",currLocation);
+
+  const fetchWeatherData = async (location) => {
+    const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': '9fe86fb006mshf6b0a49b11fe37fp112be1jsn57e1cd676c0e',
+        'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
+      }
+    }
+    try {
+      const response = await fetch(url,options);
+      const data = await response.json();
+      setWeatherData(data)
+    }catch (error) {
+      console.error('Error fetching weather data:', error);
+    }
+  };
+
+  
+ 
+
+  useEffect(() => {
+    fetchLocationData();
+  }, []);
+
+  useEffect(() => {
+    if(currLocation){
+      fetchWeatherData(currLocation);
+    }
+  }, [currLocation]);
+  console.log("weather data in app ",weatherData);
+  
+
 
   return (
     <>
-      <NextUIProvider>
-        <div className=' max-w-[80rem] mx-auto'>
-          <Navbar />
-          <Grid />
-        </div>
-      </NextUIProvider>
+
+      <div className=' max-w-[80rem] mx-auto font-outfit'>
+        <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} />
+        <Grid />
+      </div>
+
     </>
   )
 }
