@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const {nextui} = require("@nextui-org/theme");
 export default {
   content: [
     "./index.html",
@@ -10,10 +9,14 @@ export default {
     extend: {},
     fontFamily:{
       outfit:["Outfit", "sans-serif"]
-    }
+    },
+    screens:{
+      'desk':'1600px',
+      
+    },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [],
   
 }
 

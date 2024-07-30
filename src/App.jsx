@@ -71,7 +71,7 @@ function App() {
   return (
     <>
 
-      <div className=' max-w-[80rem] h-full mx-auto font-outfit'>
+      <div className=' desk:w-[80rem] w-[65rem]  h-screen mx-auto overflow-hidden font-outfit'>
         <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} />
         <Grid weatherData={weatherData}/>
       </div>

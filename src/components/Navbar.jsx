@@ -20,7 +20,7 @@ const Navbar = ({ fetchWeatherData, data }) => {
     console.log("weather data navbar ",data?.location.name);
     return (
         <div className=''>
-            <div className=' bg-[#ece8fa] border-3 border-white rounded-3xl h-[5rem] py-5 px-10 flex mt-3 items-center justify-between'>
+            <div className=' bg-[#eceefa] border-2 border-white rounded-3xl h-[5rem] py-5 px-10 flex mt-3 items-center justify-between'>
 
                 <div className='flex items-center'>
                     <h2 className='font-bold text-2xl text-blue-500 '>SkyCast</h2>
