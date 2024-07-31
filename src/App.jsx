@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Grid from './components/Grid'
 
+
+
 function App() {
   const [currLocation, setCurrLocation] = useState()
   const [weatherData, setWeatherData] = useState();
-
+  console.log('api key ',import.meta.env.VITE_API_KEY);
   const fetchLocationData = async () => {
     try {
       // Fetch IP address
@@ -18,7 +20,7 @@ function App() {
       const options = {
         method: 'GET',
         headers: {
-          'x-rapidapi-key': '9fe86fb006mshf6b0a49b11fe37fp112be1jsn57e1cd676c0e',
+          'x-rapidapi-key': import.meta.env.VITE_API_KEY,
           'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
         }
       };
@@ -38,7 +40,7 @@ function App() {
     const options = {
       method: 'GET',
       headers: {
-        'x-rapidapi-key': '9fe86fb006mshf6b0a49b11fe37fp112be1jsn57e1cd676c0e',
+        'x-rapidapi-key': import.meta.env.VITE_API_KEY,
         'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
       }
     }
