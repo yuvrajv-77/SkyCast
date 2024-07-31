@@ -24,23 +24,27 @@ const Forecast = ({ data, curr, weatherimgs }) => {
   
     // const img = weatherimgs[data?.condition.code] || '/src/assets/sun.png'
 
-    let today, tomorrow, day3;
-    if (data) {
-        today = data[0].day
-        tomorrow = data[1].day
-        day3 = data[2].day
-    }
+    // let today, tomorrow, day3;
+    // if (data) {
+    //     today = data[0].day
+    //     tomorrow = data[1].day
+    //     day3 = data[2].day
+    // }
+    let topInfo;
+    let showForecast;
 
-    let showForecast
     if (data) {
         switch (aTab) {
             case 'today':
+                topInfo = data[0].day
                 showForecast = data[0].hour
                 break;
             case 'tomorrow':
+                topInfo = data[1].day
                 showForecast = data[1].hour
                 break;
             case 'day3':
+                topInfo = data[2].day
                 showForecast = data[2].hour
                 break;
             default:
@@ -73,23 +77,20 @@ const Forecast = ({ data, curr, weatherimgs }) => {
 
                 {/* ----Left Side---- */}
                 <div className='flex items-center gap-3'>
-                    <CiAlarmOn size={55} />
+                <img src={weatherimgs[topInfo?.condition.code]} className='size-16 desk:size-20' alt="" />
                     <div>
-                        <p className='text-sm desk:text-base'>{aTab === 'today' ? (curr?.status) :
-                            aTab === 'tomorrow' ? (tomorrow?.condition.text) :
-                                aTab === 'day3' ? (day3?.condition.text) : ('00')
-                        }</p>
-                        <p className=' flex items-start text-3xl desk:text-4xl font-light'>{
-                            aTab === 'today' ? (curr?.tempC || "00.0") :
-                                aTab === 'tomorrow' ? (tomorrow?.avgtemp_c) :
-                                    aTab === 'day3' ? (day3?.avgtemp_c) : ('00')
-
-                        } <span className='text-xl'>°C</span></p>
+                        <p className='text-sm desk:text-base'>{topInfo?.condition.text}</p>
+                        <p className=' flex  text-3xl desk:text-4xl font-light'>{topInfo?.avgtemp_c}<span className='text-xl text-start'>°C</span></p>
                     </div>
                 </div>
 
                 {/* ----Right Side---- */}
-                {
+                <div className='flex flex-col items-end text-sm gap-3'>
+                        <p >Min Temp: {topInfo?.mintemp_c} °C</p>
+                        <p>Max Temp: {topInfo?.maxtemp_c} °C</p>
+                    </div>
+
+                {/* {
                     aTab === 'today' ? (<div className='flex flex-col items-end text-sm gap-3'>
                         <p >Min Temp: {today?.mintemp_c}°C</p>
                         <p>Max Temp: {today?.maxtemp_c}°C</p>
@@ -103,7 +104,7 @@ const Forecast = ({ data, curr, weatherimgs }) => {
                                 <p>Max Temp: {day3?.maxtemp_c}°C</p>
                             </div>) : ('00')
 
-                }
+                } */}
 
             </div>
 
