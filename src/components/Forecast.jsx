@@ -22,7 +22,7 @@ const Forecast = ({ data, curr, weatherimgs }) => {
     };
 
   
-    // const img = weatherimgs[data?.condition.code] || '/src/assets/sun.png'
+    // const img = weatherimgs[data?.condition.code] || '/assets/sun.png'
 
     // let today, tomorrow, day3;
     // if (data) {

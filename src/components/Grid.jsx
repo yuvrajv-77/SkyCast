@@ -31,33 +31,33 @@ const Grid = ({ weatherData }) => {
     }
 
     const weatherImages = {
-        1000: "/src/assets/sun.png",
-        1003: "/src/assets/partly-cloudy.png",
-        1006: "/src/assets/clouds.png",
-        1009: "/src/assets/overcast.png",
-        1030: "/src/assets/overcast.png",
-        1066: "/src/assets/light-rain.png",
-        1063: "/src/assets/light-rain.png",
-        1087: "/src/assets/light-thunder.png",
-        1135: "/src/assets/fog.png",
-        1147: "/src/assets/fog.png",
-        1150: "/src/assets/light-rain.png",
-        1180: "/src/assets/light-rain.png",
-        1089: "/src/assets/light-rain.png",
-        1192: "/src/assets/rain.png",
-        1195: "/src/assets/rain.png",
-        1198: "/src/assets/light-snow.png",
-        1210: "/src/assets/light-snow.png",
-        1213: "/src/assets/light-snow.png",
-        1219: "/src/assets/snowy.png",
-        1215: "/src/assets/snowy.png",
-        1240: "/src/assets/light-rain.png",
-        1273: "/src/assets/thunder.png",
-        1276: "/src/assets/storm.png",
-        1282: "/src/assets/storm.png"
+        1000: "/assets/sun.png",
+        1003: "/assets/partly-cloudy.png",
+        1006: "/assets/clouds.png",
+        1009: "/assets/overcast.png",
+        1030: "/assets/overcast.png",
+        1066: "/assets/light-rain.png",
+        1063: "/assets/light-rain.png",
+        1087: "/assets/light-thunder.png",
+        1135: "/assets/fog.png",
+        1147: "/assets/fog.png",
+        1150: "/assets/light-rain.png",
+        1180: "/assets/light-rain.png",
+        1089: "/assets/light-rain.png",
+        1192: "/assets/rain.png",
+        1195: "/assets/rain.png",
+        1198: "/assets/light-snow.png",
+        1210: "/assets/light-snow.png",
+        1213: "/assets/light-snow.png",
+        1219: "/assets/snowy.png",
+        1215: "/assets/snowy.png",
+        1240: "/assets/light-rain.png",
+        1273: "/assets/thunder.png",
+        1276: "/assets/storm.png",
+        1282: "/assets/storm.png"
     }
     const weatherCode = weatherData?.current.condition.code;
-    const weatherImage = weatherImages[weatherCode] || "/src/assets/sun.png";
+    const weatherImage = weatherImages[weatherCode] || "/assets/sun.png";
 
 
     return (
