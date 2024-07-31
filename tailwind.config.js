@@ -6,13 +6,14 @@ export default {
     "./node_modules/@nextui-org/theme/dist/components/button.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+     
+    },
     fontFamily:{
       outfit:["Outfit", "sans-serif"]
     },
     screens:{
       'desk':'1600px',
-      
     },
   },
   darkMode: "class",

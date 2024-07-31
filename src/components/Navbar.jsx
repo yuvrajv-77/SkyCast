@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { CiLocationOn, CiSearch } from "react-icons/ci";
-import { FiMoon } from 'react-icons/fi';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { MdLocationSearching } from 'react-icons/md';
 import { TbCurrentLocation } from 'react-icons/tb';
 import { VscGithub } from 'react-icons/vsc';
 
-const Navbar = ({ fetchWeatherData, data, error }) => {
+const Navbar = ({ fetchWeatherData, data, error, darkmode, toggleDarkMode }) => {
 
     const [inputValue, setInputValue] = useState('');
     const [suggestion, setSuggestions] = useState([]);
@@ -71,18 +71,18 @@ const Navbar = ({ fetchWeatherData, data, error }) => {
     const city = data?.location.name;
     const country = data?.location.country;
 
-    console.log('testing suggestions ', suggestion);
+    // console.log('testing suggestions ', suggestion);
 
     return (
         <div className=''>
-            <div className=' bg-[#eceefa] border-2 border-white rounded-3xl h-[5rem] py-5 px-10 flex mt-3 items-center justify-between'>
+            <div className=' bg-[#eceefa] border-2 dark:bg-[#0c101d] dark:border-[#232c47]  border-white  rounded-3xl h-[5rem] py-5 px-10 flex mt-3 items-center justify-between'>
 
                 <div className='flex items-center'>
-                    <h2 className='font-bold text-2xl text-blue-500 '>SkyCast</h2>
+                    <h2 className='font-bold text-2xl text-blue-500 cursor-none '>SkyCast</h2>
                 </div>
 
                 {/* location */}
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2 dark:invert'>
                     <CiLocationOn size={25} />
                     <p className=''>{city || 'Mumbai'}, {country || 'India'}</p>
                 </div>
@@ -91,8 +91,8 @@ const Navbar = ({ fetchWeatherData, data, error }) => {
                 <form className='relative' onSubmit={(e) => e.preventDefault()}>
                     <CiSearch size={25} color='gray' className='absolute bottom-2 left-3' />
                     <input
-                        className='border bg-transparent border-gray-400 rounded-xl py-2 pl-10  pr-14 w-[25rem] outline-none focus:bg-white'
-                        placeholder='Search Location'
+                        className='border bg-transparent dark:text-white border-gray-400 rounded-xl py-2 pl-10  pr-14 w-[25rem] outline-none dark:focus:bg-blue-900 focus:bg-white'
+                        placeholder='Search By City Name'
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
@@ -110,7 +110,7 @@ const Navbar = ({ fetchWeatherData, data, error }) => {
                                         setInputValue('')
                                         setHighlightedIndex(-1);
                                     }}
-                                    className={`cursor-pointer hover:bg-purple-50 p-2 rounded-xl ${highlightedIndex === index ? 'bg-purple-50' :''}` }>{location.name}, {location.region}, {location.country}
+                                    className={`cursor-pointer hover:bg-purple-50 p-2 rounded-xl ${highlightedIndex === index ? 'bg-purple-50' : ''}`}>{location.name}, {location.region}, {location.country}
                                 </li>
                             ))}
 
@@ -119,19 +119,21 @@ const Navbar = ({ fetchWeatherData, data, error }) => {
                 </form>
 
                 <div>
-                    <button className=' p-2 bg-zinc-900 rounded-xl text-white flex items-center gap-2'>
-                        <FiMoon size={22} />
-                        Dark
+                    <button
+                        onClick={toggleDarkMode}
+                        className=' p-2 bg-zinc-900 dark:bg-blue-600 rounded-xl text-white flex items-center gap-2'>
+                        {darkmode ? <FiSun size={22} /> : <FiMoon size={22} />}
+                        {darkmode ? 'Light' : 'Dark'}
                     </button>
                 </div>
 
-                <div>
-                    <VscGithub size={25} />
-                </div>
+                <a className='cursor-help' target='blank' href='https://github.com/yuvrajv-77/SkyCast'>
+                    <VscGithub size={25} className='dark:invert' />
+                </a>
 
-                <div>
-                    <IoSettingsOutline size={25} />
-                </div>
+                {/* <div>
+                    <IoSettingsOutline size={25} className='dark:invert' />
+                </div> */}
             </div>
         </div>
     )

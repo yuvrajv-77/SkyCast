@@ -3,9 +3,14 @@ import Navbar from './components/Navbar'
 import Grid from './components/Grid'
 
 function App() {
+  const [dark, setdark] = useState(true);
   const [currLocation, setCurrLocation] = useState()
   const [weatherData, setWeatherData] = useState();
-const [error, setError] =useState(null)
+  const [error, setError] = useState(null)
+
+  const toggleDarkMode = () => {
+    setdark(!dark);
+  };
 
   const fetchLocationData = async () => {
     try {
@@ -32,7 +37,7 @@ const [error, setError] =useState(null)
       console.error("Failed to fetch location data: ", error);
     }
   };
-  console.log("curr ip Location: ",currLocation);
+  // console.log("curr ip Location: ", currLocation);
 
   const fetchWeatherData = async (location) => {
     const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}&days=3`;
@@ -44,47 +49,47 @@ const [error, setError] =useState(null)
       }
     }
     try {
-      const response = await fetch(url,options);
+      const response = await fetch(url, options);
       const data = await response.json();
-      if(data.error){
+      if (data.error) {
         setError(data.error.message);
         // setWeatherData(null);
-      }else{
+      } else {
         setWeatherData(data)
         setError(null);
       }
-      
-    }catch (error) {
+
+    } catch (error) {
       console.error('Error fetching weather data:', error);
     }
   };
 
-  
- console.warn('some err ',error)
+
+  console.warn('some err ', error)
 
   useEffect(() => {
     fetchLocationData();
   }, []);
 
   useEffect(() => {
-    if(currLocation){
+    if (currLocation) {
       fetchWeatherData(currLocation);
     }
   }, [currLocation]);
-  
-  console.log("weather data in app ",weatherData);
-  
+
+  console.log("weather data in app ", weatherData);
+
 
 
   return (
-    <>
+    <div className={dark ? 'dark' : ''}>
 
-      <div className=' desk:w-[80rem] w-[65rem]  h-screen mx-auto overflow-hidden font-outfit'>
-        <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} error={error} />
+      <div className=' desk:w-[80rem] w-[65rem]  h-screen mx-auto overflow-hidden font-outfit '>
+        <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} error={error} darkmode={dark} toggleDarkMode={toggleDarkMode} />
         <Grid weatherData={weatherData} />
       </div>
 
-    </>
+    </div>
   )
 }
 

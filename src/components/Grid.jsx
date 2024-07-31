@@ -64,39 +64,39 @@ const Grid = ({ weatherData }) => {
         <div>
             <div className='h-[calc(100vh-8rem)]  mt-5  grid grid-cols-5 gap-y-3 gap-x-5 desk:gap-5 grid-rows-6'>
 
-                <div className='col-span-3 row-span-2  bg-[#eceefa] rounded-3xl border-2 border-white relative overflow-hidden'><CurrentTemp data={Temperature} img={weatherImage} /></div>
+                <div className='col-span-3 row-span-2 dark:bg-[#0c101d] dark:border-[#232c47]  bg-[#eceefa] rounded-3xl border-2 border-white relative overflow-hidden'><CurrentTemp data={Temperature} img={weatherImage} /></div>
 
-                <div className=' bg-[#eceefa] rounded-3xl border-2 border-white col-span-2 row-span-6'><Forecast data={weatherData?.forecast.forecastday} curr={Temperature} weatherimgs={weatherImages} /></div>
-
-
-                <div className=' bg-[#eceefa] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
-                    <div className='flex items-center gap-3 text-sm desk:text-base'><PiDrop size={21} />Humidity</div>
-                    <p className='text-xl desk:text-2xl font-semibold pl-8'>{Temperature.humidity} %</p>
-                </div>
-                <div className=' bg-[#eceefa] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
-                    <div className='flex items-center gap-3 text-sm desk:text-base'><TbWind size={21} />Wind</div>
-                    <p className='text-xl desk:text-2xl font-semibold pl-8'>{Temperature.windMPH} mph</p>
-                </div>
-                <div className=' bg-[#eceefa] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
-                    <div className='flex items-center gap-3 text-sm desk:text-base'><LuArrowDownNarrowWide size={22} />Pressure</div>
-                    <p className='text-xl desk:text-2xl font-semibold pl-8'>{Temperature.pressureIn} in</p>
-                </div>
-                <div className=' bg-[#eceefa] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
-                    <div className='flex items-center gap-3 text-sm desk:text-base'><FiEye size={21} />Visibility</div>
-                    <p className='text-xl desk:text-2xl font-semibold pl-8'>{Temperature.visibilityMi} miles</p>
-                </div>
-                <div className=' bg-[#eceefa] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
-                    <div className='flex items-center gap-3 text-sm desk:text-base'><PiCloud size={21} />Clouds</div>
-                    <p className='text-xl desk:text-2xl font-semibold pl-8'>{Temperature.cloud} %</p>
-                </div>
-                <div className=' bg-[#eceefa] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
-                    <div className='flex items-center gap-3 text-sm desk:text-base'><MdDewPoint size={22} />Dew Point</div>
-                    <p className='text-xl desk:text-2xl font-semibold pl-8'>{Temperature.dewpointC} °C</p>
-                </div>
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47]  rounded-3xl border-2 border-white col-span-2 row-span-6'><Forecast data={weatherData?.forecast.forecastday} curr={Temperature} weatherimgs={weatherImages} /></div>
 
 
-                <div className=' bg-[#eceefa] rounded-3xl border-2 border-white col-span-3 row-span-2 py-4 desk:py-7 px-9 flex justify-between'>
-                    <div className='flex flex-col justify-around'>
+                <div className=' bg-[#eceefa]  dark:bg-[#0c101d] dark:border-[#232c47] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
+                    <div className='flex items-center gap-3 text-sm desk:text-base dark:invert'><PiDrop size={21} />Humidity</div>
+                    <p className='text-xl desk:text-2xl font-semibold pl-8 dark:invert'>{Temperature.humidity} %</p>
+                </div>
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
+                    <div className='flex items-center gap-3 text-sm desk:text-base dark:invert'><TbWind size={21} />Wind</div>
+                    <p className='text-xl desk:text-2xl font-semibold pl-8 dark:invert'>{Temperature.windMPH} mph</p>
+                </div>
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
+                    <div className='flex items-center gap-3 text-sm desk:text-base dark:invert'><LuArrowDownNarrowWide size={22} />Pressure</div>
+                    <p className='text-xl desk:text-2xl font-semibold pl-8 dark:invert'>{Temperature.pressureIn} in</p>
+                </div>
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
+                    <div className='flex items-center gap-3 text-sm desk:text-base dark:invert'><FiEye size={21} />Visibility</div>
+                    <p className='text-xl desk:text-2xl font-semibold pl-8 dark:invert'>{Temperature.visibilityMi} miles</p>
+                </div>
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47] rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
+                    <div className='flex items-center gap-3 text-sm desk:text-base dark:invert'><PiCloud size={21} />Clouds</div>
+                    <p className='text-xl desk:text-2xl font-semibold pl-8 dark:invert'>{Temperature.cloud} %</p>
+                </div>
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47]  rounded-2xl border-2 border-white p-3 desk:p-5 flex flex-col justify-around'>
+                    <div className='flex items-center gap-3 text-sm desk:text-base dark:invert'><MdDewPoint size={22} />Dew Point</div>
+                    <p className='text-xl desk:text-2xl font-semibold pl-8 dark:invert'>{Temperature.dewpointC} °C</p>
+                </div>
+
+
+                <div className=' bg-[#eceefa] dark:bg-[#0c101d] dark:border-[#232c47]  rounded-3xl border-2 border-white col-span-3 row-span-2 py-4 desk:py-7 px-9 flex justify-between'>
+                    <div className='flex flex-col justify-around dark:invert'>
                         <div className=' flex flex-col justify-around'>
                             <div className='flex items-center gap-3 text-sm desk:text-base'><PiCloudRain size={27} />Chance of Rain</div>
                             <p className='text-xl desk:text-2xl font-semibold pl-10'>{Temperature.rainChance} %</p>
@@ -106,7 +106,7 @@ const Grid = ({ weatherData }) => {
                             <p className='text-xl desk:text-2xl font-semibold pl-10'>{Temperature.uv}</p>
                         </div>
                     </div>
-                    <div className='flex flex-col justify-around'>
+                    <div className='flex flex-col justify-around dark:invert'>
                         <div className=' flex flex-col justify-around'>
                             <div className='flex items-center gap-3 text-sm desk:text-base'><FiSunrise size={25} />Sunrise</div>
                             <p className='text-xl desk:text-2xl font-semibold pl-10'>{Temperature.sunrise} </p>
@@ -116,7 +116,7 @@ const Grid = ({ weatherData }) => {
                             <p className='text-xl desk:text-2xl font-semibold pl-10'>{Temperature.moonrise}</p>
                         </div>
                     </div>
-                    <div className='flex flex-col justify-around'>
+                    <div className='flex flex-col justify-around dark:invert'>
                         <div className=' flex flex-col justify-around'>
                             <div className='flex items-center gap-3 text-sm desk:text-base'><FiSunset size={25} />Sunset</div>
                             <p className='text-xl desk:text-2xl font-semibold pl-10'>{Temperature.sunset}</p>

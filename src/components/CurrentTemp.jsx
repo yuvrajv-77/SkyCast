@@ -36,19 +36,19 @@ const CurrentTemp = ({ data,img }) => {
 
     return (
         <div className=' px-6 py-4  desk:p-8 flex flex-col justify-between h-full '>
-            <div className='text-md flex font-light'>
+            <div className='text-md flex font-light dark:text-white'>
                 {currentTime} <span className='border border-gray-300 mx-2'></span> {currentDate}
             </div>
 
-            <div className='flex items-center gap-9'>
+            <div className='flex items-center gap-9 '>
                 <p className=' flex items-start text-7xl desk:text-8xl text-blue-500 font-extralight'>{data.tempC || '00.0'}<span className='text-3xl '>°C</span></p>
-                <div className='border-l-2 pl-5 py-4  desk:text-lg font-normal border-gray-300'>
-                    <p>{data.status}</p>
-                    <p className='text-gray-500'>Feels Like {data.feelC}°C</p>
+                <div className='border-l-2 pl-5 py-4  desk:text-lg font-normal  border-gray-300'>
+                    <p className='dark:invert'>{data.status}</p>
+                    <p className='dark:invert'>Feels Like {data.feelC}°C</p>
                 </div>
             </div>
             
-            <div><p className='font-light desk:text-md'>There will be mostly Sunny Skies.</p></div>
+            <div><p className='font-light desk:text-md dark:invert'>There will be mostly Sunny Skies.</p></div>
             <img src={img} className='absolute -right-14 -top-12 size-56 desk:size-64' alt="" />
         </div>
     )
