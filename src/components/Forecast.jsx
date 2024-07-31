@@ -53,7 +53,7 @@ const Forecast = ({ data, curr, weatherimgs }) => {
     }
 
 
-    console.log("forecasting: ", showForecast);
+    // console.log("forecasting: ", showForecast);
     return (
         <div className='p-7'>
             <div className=' flex items-center justify-between'>

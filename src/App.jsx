@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Grid from './components/Grid'
 
-
-
 function App() {
   const [currLocation, setCurrLocation] = useState()
   const [weatherData, setWeatherData] = useState();
-  console.log('api key ',import.meta.env.VITE_API_KEY);
+const [error, setError] =useState(null)
+
   const fetchLocationData = async () => {
     try {
       // Fetch IP address
@@ -47,14 +46,21 @@ function App() {
     try {
       const response = await fetch(url,options);
       const data = await response.json();
-      setWeatherData(data)
+      if(data.error){
+        setError(data.error.message);
+        // setWeatherData(null);
+      }else{
+        setWeatherData(data)
+        setError(null);
+      }
+      
     }catch (error) {
       console.error('Error fetching weather data:', error);
     }
   };
 
   
- 
+ console.warn('some err ',error)
 
   useEffect(() => {
     fetchLocationData();
@@ -74,8 +80,8 @@ function App() {
     <>
 
       <div className=' desk:w-[80rem] w-[65rem]  h-screen mx-auto overflow-hidden font-outfit'>
-        <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} />
-        <Grid weatherData={weatherData}/>
+        <Navbar fetchWeatherData={fetchWeatherData} data={weatherData} error={error} />
+        <Grid weatherData={weatherData} />
       </div>
 
     </>
